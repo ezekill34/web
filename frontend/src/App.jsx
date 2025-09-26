@@ -1,14 +1,20 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
 
-export default function App() {
-  const token = localStorage.getItem('token');
+function App() {
   return (
-    <Routes>
-      <Route path='/login' element={<Login />} />
-      <Route path='/dashboard' element={token ? <Dashboard /> : <Navigate to='/login' />} />
-    </Routes>
+    <div>
+      <nav>
+        <Link to="/">Login</Link> | <Link to="/dashboard">Dashboard</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </div>
   );
 }
+
+export default App;
